@@ -6,7 +6,7 @@ export function handleInitialData() {
   return (dispatch) => {
     return Promise.all([
       _getUsers(),
-      _getQuestions
+      _getQuestions()
     ]).then(([users, questions]) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
