@@ -1,68 +1,86 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Would You Rather?
 
-## Available Scripts
+## Project Layout
 
-In the project directory, you can run:
+### Views and Components
 
-### `yarn start`
+#### - Common components
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* **App** - the overall container for the project
+* Only shows after logging in
+	* **Navigation** - the navigation bar
+	* **User Info** - shows current authroized user and a logout button
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### - Login Page
 
-### `yarn test`
+located at route `/login`
+![login view](docs/images/view_login.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Login** - a sign in box
 
-### `yarn build`
+#### - Home Page
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+located at route `/`
+![home view](docs/images/view_home.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* **Question List** - shows both answered and unanswered questions, listed from most recently added at the top, to oldest at the bottom
+* **Question Card** - shows the author (avatar and name), option A and button linking to question page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### - Question Page
 
-### `yarn eject`
+located at route `/question/:id`
+![unanswered view](docs/images/view_unanswered.png)
+![answered view](docs/images/view_answered.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* **Question** - shows the author (avatar and name), and two options
+	* if unanswered, shows options as radio buttons, as well as a submit button
+	* if answered, shows result from all users as well as choice of the current user
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### - New Question Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+located at route `/new`
+![create view](docs/images/view_create.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* **New Question** - shows a form to fill in text for both options
 
-## Learn More
+#### - Leaderboard Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+located at route `/leaderboard`
+![leaderboard view](docs/images/view_leaderboard.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* **Leaderboard** - shows all users ranked by score (created + answered questions) from high to low
+* **User Card** - shows the author (avatar and name), and the number of created an answered questions, as well as the total score
 
-### Code Splitting
+### Events by Component
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+#### - User Info
+* *get* **authedUser** to display
+* *set* **authedUser** to `null` when logging out
 
-### Analyzing the Bundle Size
+#### - Login
+* *set* **authedUser**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### - Question List
+* *get* **questions**
+* *get* **authedUser** and **answers** to determine which list a question belongs to
 
-### Making a Progressive Web App
+#### - Question Card
+* *get* a question from **questions**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### - Question
+* *get* a question from **questions** based on id
+* *get* **authedUser** to determine whether the current user has answered this question, and
+	* *set* current user's answer in **answers** when not answered
+	* *get* stats from **answers** for this question when already answered
 
-### Advanced Configuration
+#### - New Question
+* *get* **authedUser** to determine the author of new question
+* *set* a new question in **questions** and corresponding answer in **answers**
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### - Leaderboard
+* *get* **users**, **questions** and **answers** to rank users
 
-### Deployment
+#### - User Card
+* *get* **users**, **questions** and **answers** to count score
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Data
