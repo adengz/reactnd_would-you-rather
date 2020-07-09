@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { handleVote } from '../actions/shared';
 
 class Vote extends React.Component {
   state = { selectedOption: null };
@@ -9,7 +10,10 @@ class Vote extends React.Component {
   }
 
   handleSubmit = (e) => {
-    // TODO: Implement answer submission
+    const { match, dispatch } = this.props;
+    const { id } = match.params;
+
+    dispatch(handleVote(id, this.state.selectedOption));
   }
 
   render() {
@@ -34,7 +38,11 @@ class Vote extends React.Component {
             </label>
           </p>
         ))}
-        <button className="btn" onClick={this.handleSubmit}>
+        <button
+          className="btn"
+          onClick={this.handleSubmit}
+          disabled={this.state.selectedOption === null}
+        >
           Submit Answer
         </button>
       </div>
@@ -45,10 +53,8 @@ class Vote extends React.Component {
 const ConnectedVote = connect(mapStateToProps)(Vote);
 
 function Question(props) {
-  const { id } = props;
-
   return (
-    <ConnectedVote match={{params: { id }}} />
+    <ConnectedVote match={props.match} />
   );
 }
 
@@ -60,7 +66,6 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   const answer = users[authedUser].answers[id];
 
   return {
-    id,
     avatarURL,
     name,
     options: { optionOne, optionTwo },
