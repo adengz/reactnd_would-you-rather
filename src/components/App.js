@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
+import Login from './Login';
 
 class App extends React.Component {
   componentDidMount() {
@@ -8,12 +9,25 @@ class App extends React.Component {
   }
 
   render() {
+    const { authedUser, users } = this.props;
+
     return (
       <div className="App">
-        Hello world
+        {
+          authedUser === null
+            ? <Login />
+        : <div>Welcome, {users[authedUser].name}!</div>
+        }
       </div>
     );
   };
 }
 
-export default connect()(App);
+function mapStateToProps({ authedUser, users }) {
+  return {
+    authedUser,
+    users
+  };
+}
+
+export default connect(mapStateToProps)(App);
