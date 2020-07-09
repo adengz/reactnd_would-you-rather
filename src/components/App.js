@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared'
 import Login from './Login';
+import QuestionList from './QuestionList';
 
 class App extends React.Component {
   componentDidMount() {
@@ -9,25 +10,22 @@ class App extends React.Component {
   }
 
   render() {
-    const { authedUser, users } = this.props;
+    const { authedUser } = this.props;
 
     return (
       <div className="App">
         {
           authedUser === null
             ? <Login />
-        : <div>Welcome, {users[authedUser].name}!</div>
+        : <QuestionList />
         }
       </div>
     );
   };
 }
 
-function mapStateToProps({ authedUser, users }) {
-  return {
-    authedUser,
-    users
-  };
+function mapStateToProps({ authedUser }) {
+  return { authedUser };
 }
 
 export default connect(mapStateToProps)(App);
