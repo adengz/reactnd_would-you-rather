@@ -3,16 +3,37 @@ import { connect } from 'react-redux';
 
 class QuestionList extends React.Component {
   state = {
-    answered: false
+    activeTab: 'unanswered'
   };
 
+  toggleTab = (e) => {
+    this.setState({
+      activeTab: e.target.value
+    });
+  }
+
   render() {
-    const questionIds = this.props[this.state.answered? 'answeredIds':'unansweredIds'];
+    const { activeTab } = this.state;
+    const questionIds = this.props[activeTab + 'Ids'];
+
+    const tabs = {
+      unanswered: 'question-list-tab',
+      answered: 'question-list-tab'
+    };
+    tabs[activeTab] += '-active';
 
     return (
       <div>
-        <div className="question-list-tab"></div>
-        <ul className="question-list">
+        <ul className="question-list-tabs">
+          {Object.entries(tabs).map(([k, v]) => (
+            <li key={k}>
+              <button className={v} value={k} onClick={this.toggleTab}>
+                {`${k} questions`}
+              </button>
+            </li>
+          ))}
+        </ul>
+        <ul className="card-list">
           {questionIds.map((id) => (
             <li key={id}>
               <p>Question ID: {id}</p>
