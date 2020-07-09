@@ -3,14 +3,10 @@ import { connect } from 'react-redux';
 import QuestionCard from './QuestionCard';
 
 class QuestionList extends React.Component {
-  state = {
-    activeTab: 'unanswered'
-  };
+  state = { activeTab: 'unanswered' };
 
   toggleTab = (e) => {
-    this.setState({
-      activeTab: e.target.value
-    });
+    this.setState({ activeTab: e.target.value });
   }
 
   render() {
