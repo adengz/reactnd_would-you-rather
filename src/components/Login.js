@@ -8,9 +8,8 @@ class Login extends React.Component {
   };
 
   handleSelectUser = (e) => {
-    const selectedUserId = e.target.value;
     this.setState({
-      selectedUserId
+      selectedUserId: e.target.value
     });
   }
 
@@ -31,7 +30,11 @@ class Login extends React.Component {
       <div className="login">
         <h1>Would you rather...</h1>
         <p>Sign in to continue</p>
-        <select className="user-select" value={''} onChange={this.handleSelectUser}>
+        <select
+          className="user-select"
+          value={this.state.selectedUserId}
+          onChange={this.handleSelectUser}
+        >
           <option value={''} disabled>Select User</option>
           {Object.keys(users).map((id) => (
             <option key={id} value={id}>{users[id].name}</option>
