@@ -1,7 +1,15 @@
 import * as API from '../utils/_DATA';
 import { logOut, logIn } from './authedUser';
-import { receiveUsers, addAnswerToUser } from './users';
-import { receiveQuestions, addAnswerToQuestion } from './questions';
+import {
+  receiveUsers,
+  addAnswerToUser,
+  addQuestionToUser
+} from './users';
+import {
+  receiveQuestions,
+  addAnswerToQuestion,
+  addQuestionToQuestions
+} from './questions';
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -32,5 +40,23 @@ export function handleVote(qid, answer) {
     dispatch(addAnswerToQuestion(info));
 
     return API._saveQuestionAnswer(info);
+  };
+}
+
+export function handleNewQuestion({ optionOneText, optionTwoText }) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    const info = {
+      optionOneText,
+      optionTwoText,
+      author: authedUser
+    };
+
+    return API._saveQuestion(info)
+      .then((question) => {
+        const { id } = question;
+        dispatch(addQuestionToUser({ authedUser, id }));
+        dispatch(addQuestionToQuestions({ question }));
+      });
   };
 }
