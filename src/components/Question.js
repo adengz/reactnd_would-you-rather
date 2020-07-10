@@ -20,37 +20,37 @@ class Vote extends React.Component {
     const { name, avatarURL, options } = this.props;
 
     return (
-      <div className="question">
-        <h4>{`${name} asks`}</h4>
+      <div className="card">
+        <h2 className="card-title">{`${name} asks`}</h2>
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-        <h4>Would you rather</h4>
-        {Object.entries(options).map(([k, v]) => (
-          <p key={k}>
-            <label className="vote-option">
-              <input
-                type="radio"
-                name="option"
-                value={k}
-                checked={this.state.selectedOption === k}
-                onChange={this.handleSelect}
-              />
-              {v.text}
-            </label>
-          </p>
-        ))}
-        <button
-          className="btn"
-          onClick={this.handleSubmit}
-          disabled={this.state.selectedOption === null}
-        >
-          Submit Answer
-        </button>
+        <div className="card-detail">
+          <h3>Would you rather</h3>
+          {Object.entries(options).map(([k, v]) => (
+            <p key={k}>
+              <label className="vote-option">
+                <input
+                  type="radio"
+                  name="option"
+                  value={k}
+                  checked={this.state.selectedOption === k}
+                  onChange={this.handleSelect}
+                />
+                {v.text}
+              </label>
+            </p>
+          ))}
+          <button
+            className="btn"
+            onClick={this.handleSubmit}
+            disabled={this.state.selectedOption === null}
+          >
+            Submit Answer and View Results
+          </button>
+        </div>
       </div>
     );
   }
 }
-
-const ConnectedVote = connect(mapStateToProps)(Vote);
 
 function Result(props) {
   const { name, avatarURL, options, answer } = props;
@@ -80,17 +80,15 @@ function Result(props) {
   );
 }
 
-const ConnectedResult = connect(mapStateToProps)(Result);
-
 function Question(props) {
-  const { match, answer } = props;
+  const { answer } = props;
 
   return (
     <div>
       {
         answer === undefined
-          ? <ConnectedVote match={match} />
-          : <ConnectedResult match={match} />
+          ? <Vote {...props} />
+          : <Result {...props} />
       }
     </div>
     );

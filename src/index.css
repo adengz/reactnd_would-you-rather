@@ -57,26 +57,31 @@ li {
 }
 
 .btn {
-  width: 60%;
+  width: 80%;
   margin: 10px auto;
   border: 3px solid lightseagreen;
   border-radius: 3px;
-  background-color: white;
+  background-color: lightseagreen;
+  color: white;
   display: block;
 }
 
-.btn:hover:enabled {
-  background-color: lightseagreen;
-  color: white;
+.btn:disabled {
+  opacity: 0.6;
 }
 
-.btn:focus:enabled {
+.btn:hover:enabled {
+  border-color: seagreen;
+  background-color: seagreen;
+}
+
+/* .btn:focus:enabled {
   background-color: seagreen;
   color: white;
-}
+} */
 
 .dropdown {
-  width: 60%;
+  width: 80%;
   margin: 25px auto;
   display: block;
 }
