@@ -10,8 +10,8 @@ function QuestionCard(props) {
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
       <div className="card-detail">
         <h4>Would you rather</h4>
-        <p>{option}</p>
-        <p>or ...</p>
+        <p className="option">{option}</p>
+        <p className="option">or ...</p>
         <button className="btn">View Question</button>
       </div>      
     </div>

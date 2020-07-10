@@ -26,8 +26,8 @@ class Vote extends React.Component {
         <div className="card-detail">
           <h3>Would you rather</h3>
           {Object.entries(options).map(([k, v]) => (
-            <p key={k}>
-              <label className="vote-option">
+            <p key={k} className="option">
+              <label>
                 <input
                   type="radio"
                   name="option"
@@ -58,40 +58,34 @@ function Result(props) {
   let totalVotes = 0;
   for (let o in options) {
     totalVotes += options[o].votes.length;
-    options[o].className = 'result-option';
+    options[o].className = 'option';
     (o === answer) && (options[o].className += '-mine');
   }
+  const ratio = options[answer].votes.length / totalVotes * 100;
+  // TODO: build a nicer bar
 
   return (
-    <div className="question">
-      <h4>{`Asked by ${name}`}</h4>
+    <div className="card">
+      <h2 className="card-title">{`Asked by ${name}`}</h2>
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-      <h4>Results:</h4>
-      {Object.entries(options).map(([k, v]) => (
-        <div key={k} className={v.className}>
-          <p>
-            {v.votes.length} of {totalVotes} ({v.votes.length / totalVotes * 100}%) would rather {v.text
-          }</p>
-          <progress max={100} value={v.votes.length / totalVotes * 100} />
-          {(k === answer) && (<span>Your choice</span>)}
-        </div>
-      ))}
+      <div className="card-detail">
+        <h4>Results:</h4>
+        {/* <progress max={100} value={ratio}>{ratio}%</progress> */}
+        {Object.entries(options).map(([k, v]) => (
+          <p key={k} className={v.className}>
+            {v.votes.length} of {totalVotes}
+             ({v.votes.length / totalVotes * 100}%)
+             would rather<br/>{v.text}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
 
 function Question(props) {
   const { answer } = props;
-
-  return (
-    <div>
-      {
-        answer === undefined
-          ? <Vote {...props} />
-          : <Result {...props} />
-      }
-    </div>
-    );
+  return answer === undefined? <Vote {...props} />:<Result {...props} />;;
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {

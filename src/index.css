@@ -31,7 +31,7 @@ li {
 .card {
   width: 100%;
   min-height: 200px;
-  border: 2px solid lightgray;
+  border: 2px solid #d3d3d3;
   border-radius: 5px;
   margin: 0;
   display: table;
@@ -40,8 +40,8 @@ li {
 .card-title {
   margin: 0;
   padding: 5px;
-  background-color: lightseagreen;
-  color: white;
+  background-color: #20b2aa;
+  color: #ffffff;
 }
 
 .card-detail {
@@ -59,10 +59,10 @@ li {
 .btn {
   width: 80%;
   margin: 10px auto;
-  border: 3px solid lightseagreen;
+  border: 3px solid #20b2aa;
   border-radius: 3px;
-  background-color: lightseagreen;
-  color: white;
+  background-color: #20b2aa;
+  color: #ffffff;
   display: block;
 }
 
@@ -71,17 +71,22 @@ li {
 }
 
 .btn:hover:enabled {
-  border-color: seagreen;
-  background-color: seagreen;
+  border-color: #3cb371;
+  background-color: #3cb371;
 }
-
-/* .btn:focus:enabled {
-  background-color: seagreen;
-  color: white;
-} */
 
 .dropdown {
   width: 80%;
   margin: 25px auto;
   display: block;
+}
+
+p.option, p.option-mine {
+  margin: 15px 10px;
+  padding: 5px 5px;
+}
+
+p.option-mine {
+  border: 3px solid #20b2aa;
+  background-color: #a8f0ed;
 }
