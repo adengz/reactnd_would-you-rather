@@ -18,7 +18,7 @@ class App extends React.Component {
         {
           authedUser === null
             ? <Login />
-            : <Question match={{params: {id: '6ni6ok3ym7mf1p33lnez'}}} />
+            : <Question match={{params: {id: 'vthrdm985a262al8qx3do'}}} />
         }
       </div>
     );
