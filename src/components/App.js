@@ -20,7 +20,7 @@ class App extends React.Component {
         {
           authedUser === null
             ? <Login />
-            : <Leaderboard />
+            : <QuestionList />
         }
       </div>
     );

@@ -3,24 +3,14 @@ import { connect } from 'react-redux';
 import { logIn } from '../actions/authedUser';
 
 class Login extends React.Component {
-  state = {
-    selectedUserId: ''
-  };
+  state = { selectedUserId: '' };
 
   handleSelectUser = (e) => {
-    this.setState({
-      selectedUserId: e.target.value
-    });
+    this.setState({ selectedUserId: e.target.value });
   }
 
   handleSignIn = (e) => {
-    e.preventDefault();
-
-    const userId = this.state.selectedUserId;
-
-    userId === ''
-      ? alert('Select your name to sign in')
-      : this.props.dispatch(logIn(userId));
+    this.props.dispatch(logIn(this.state.selectedUserId));
   }
 
   render() {
@@ -40,7 +30,13 @@ class Login extends React.Component {
             <option key={id} value={id}>{users[id].name}</option>
           ))}
         </select>
-        <button className="btn" onClick={this.handleSignIn}>Sign In</button>
+        <button
+          className="btn"
+          onClick={this.handleSignIn}
+          disabled={this.state.selectedUserId === ''}
+        >
+          Sign In
+        </button>
       </div>
     );
   }

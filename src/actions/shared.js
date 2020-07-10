@@ -1,5 +1,5 @@
 import * as API from '../utils/_DATA';
-import { logOut, logIn } from './authedUser';
+import { logOut } from './authedUser';
 import {
   receiveUsers,
   addAnswerToUser,
@@ -13,7 +13,7 @@ import {
 
 export function handleInitialData() {
   return (dispatch) => {
-    // dispatch(logOut());
+    dispatch(logOut());
     
     return Promise.all([
       API._getUsers(),
@@ -21,8 +21,6 @@ export function handleInitialData() {
     ]).then(([users, questions]) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
-      
-      dispatch(logIn('tylermcginnis'));
     });
   };
 }
