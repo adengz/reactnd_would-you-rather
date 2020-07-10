@@ -4,6 +4,7 @@ import { handleInitialData } from '../actions/shared'
 import Login from './Login';
 import QuestionList from './QuestionList';
 import Question from './Question';
+import NewQuestion from './NewQuestion';
 
 class App extends React.Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class App extends React.Component {
         {
           authedUser === null
             ? <Login />
-            : <Question match={{params: {id: 'vthrdm985a262al8qx3do'}}} />
+            : <NewQuestion />
         }
       </div>
     );
