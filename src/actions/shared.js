@@ -54,8 +54,8 @@ export function handleNewQuestion({ optionOneText, optionTwoText }) {
 
     return API._saveQuestion(info)
       .then((question) => {
-        const { id } = question;
-        dispatch(addQuestionToUser({ authedUser, id }));
+        const qid = question.id;
+        dispatch(addQuestionToUser({ authedUser, qid }));
         dispatch(addQuestionToQuestions({ question }));
       });
   };

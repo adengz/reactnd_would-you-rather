@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { handleNewQuestion } from '../actions/shared';
 
 class NewQuestion extends React.Component {
-  state = { optionOne: '', optionTwo: '' };
+  state = { optionOneText: '', optionTwoText: '' };
 
   handleInput = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit = (e) => {
-    // TODO: Implement new question submission
+    this.props.dispatch(handleNewQuestion(this.state));
+    // TODO: redirect to home
   }
 
   render() {
@@ -19,21 +21,21 @@ class NewQuestion extends React.Component {
         <h3>Would you rather</h3>
         <input
           type="text"
-          name="optionOne"
-          value={this.state.optionOne}
+          name="optionOneText"
+          value={this.state.optionOneText}
           onChange={this.handleInput}
         />
         <p>or</p>
         <input
           type="text"
-          name="optionTwo"
-          value={this.state.optionTwo}
+          name="optionTwoText"
+          value={this.state.optionTwoText}
           onChange={this.handleInput}
         />
         <button
           className="btn"
           onClick={this.handleSubmit}
-          disabled={(this.state.optionOne === '') || (this.state.optionTwo === '')}
+          disabled={Object.values(this.state).includes('')}
         >
           Submit
         </button>
