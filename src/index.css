@@ -90,3 +90,9 @@ p.option-mine {
   border: 3px solid #20b2aa;
   background-color: #a8f0ed;
 }
+
+.text-input {
+  width: 80%;
+  margin: auto;
+  display: block;
+}

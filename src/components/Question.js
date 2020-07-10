@@ -69,7 +69,7 @@ function Result(props) {
       <h2 className="card-title">{`Asked by ${name}`}</h2>
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
       <div className="card-detail">
-        <h4>Results:</h4>
+        <h3>Results:</h3>
         {/* <progress max={100} value={ratio}>{ratio}%</progress> */}
         {Object.entries(options).map(([k, v]) => (
           <p key={k} className={v.className}>

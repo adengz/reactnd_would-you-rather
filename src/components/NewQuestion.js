@@ -16,17 +16,19 @@ class NewQuestion extends React.Component {
 
   render() {
     return (
-      <div className="question">
-        <h3>Create New Question</h3>
-        <h3>Would you rather</h3>
+      <div className="card">
+        <h2 className="card-title">Create New Question</h2>
+        <h3 className="center">Would you rather</h3>
         <input
+          className="text-input"
           type="text"
           name="optionOneText"
           value={this.state.optionOneText}
           onChange={this.handleInput}
         />
-        <p>or</p>
+        <p className="center">or</p>
         <input
+          className="text-input"
           type="text"
           name="optionTwoText"
           value={this.state.optionTwoText}
