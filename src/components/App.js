@@ -16,7 +16,7 @@ class App extends React.Component {
     const { authedUser } = this.props;
 
     return (
-      <div className="App">
+      <div className="container">
         {
           authedUser === null
             ? <Login />
