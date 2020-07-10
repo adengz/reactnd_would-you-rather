@@ -27,7 +27,7 @@ class Login extends React.Component {
         <h1 className="card-title">Would you rather...</h1>
         {avatar}
         <div className="card-detail">
-          <h3 className="center">Choose your profile to sign in</h3>
+          <p className="center">Choose your profile to sign in</p>
           <select
             className="dropdown"
             value={this.state.userId}

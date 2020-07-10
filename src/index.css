@@ -9,6 +9,15 @@ body {
   color: #252525;
 }
 
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+}
+
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -21,26 +30,28 @@ body {
 
 .card {
   width: 100%;
-  min-height: 240px;
+  min-height: 200px;
   border: 2px solid lightgray;
   border-radius: 5px;
+  margin: 0;
   display: table;
 }
 
 .card-title {
   margin: 0;
   padding: 5px;
-  background-color: lightblue;
+  background-color: lightseagreen;
+  color: white;
 }
 
 .card-detail {
-  width: 60%;
-  margin: 10px;
+  width: 70%;
+  margin: 0;
   float: right;
 }
 
 .avatar {
-  width: 30%;
+  width: 25%;
   margin: 10px;
   float: left;
 }
@@ -51,7 +62,6 @@ body {
   border: 3px solid lightseagreen;
   border-radius: 3px;
   background-color: white;
-  font-size: larger;
   display: block;
 }
 
@@ -67,7 +77,6 @@ body {
 
 .dropdown {
   width: 60%;
-  margin: 20px auto;
-  font-size: large;
+  margin: 25px auto;
   display: block;
 }

@@ -5,13 +5,15 @@ function QuestionCard(props) {
   const { avatarURL, name, option } = props;
 
   return (
-    <div className="question">
-      <h4>{`${name} asks`}</h4>
+    <div className="card">
+      <h3 className="card-title">{`${name} asks`}</h3>
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-      <h4>Would you rather</h4>
-      <p>{option}</p>
-      <p>or ...</p>
-      <button>View Question</button>
+      <div className="card-detail">
+        <h4>Would you rather</h4>
+        <p>{option}</p>
+        <p>or ...</p>
+        <button className="btn">View Question</button>
+      </div>      
     </div>
   );
 }
