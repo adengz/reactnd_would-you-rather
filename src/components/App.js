@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { handleInitialData } from '../actions/shared'
+import { handleInitialData } from '../actions/shared';
 import Login from './Login';
 import QuestionList from './QuestionList';
 import Question from './Question';
 import NewQuestion from './NewQuestion';
+import Leaderboard from './Leaderboard';
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,7 +20,7 @@ class App extends React.Component {
         {
           authedUser === null
             ? <Login />
-            : <NewQuestion />
+            : <Leaderboard />
         }
       </div>
     );
