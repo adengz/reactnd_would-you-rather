@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import UserCard from './UserCard';
 
 function Leaderboard(props) {
   return (
@@ -7,7 +8,7 @@ function Leaderboard(props) {
       <ul className="card-list">
         {props.userIds.map((id) => (
           <li key={id}>
-            User ID: {id}
+            <UserCard id={id} />
           </li>
         ))}
       </ul>
