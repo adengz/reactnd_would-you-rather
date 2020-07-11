@@ -1,5 +1,5 @@
 import * as API from '../utils/_DATA';
-import { logOut, logIn } from './authedUser';
+import { showLoading, hideLoading } from 'react-redux-loading';
 import {
   receiveUsers,
   addAnswerToUser,
@@ -13,16 +13,15 @@ import {
 
 export function handleInitialData() {
   return (dispatch) => {
-    // dispatch(logOut());
-    
+    dispatch(showLoading());
+
     return Promise.all([
       API._getUsers(),
       API._getQuestions()
     ]).then(([users, questions]) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
-
-      dispatch(logIn('johndoe'));
+      dispatch(hideLoading());
     });
   };
 }
@@ -52,11 +51,14 @@ export function handleNewQuestion({ optionOneText, optionTwoText }) {
       author: authedUser
     };
 
+    dispatch(showLoading());
+
     return API._saveQuestion(info)
       .then((question) => {
         const qid = question.id;
         dispatch(addQuestionToUser({ authedUser, qid }));
         dispatch(addQuestionToQuestions({ question }));
+        dispatch(hideLoading());
       });
   };
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logIn } from '../actions/authedUser';
 
@@ -11,10 +12,12 @@ class Login extends React.Component {
 
   handleSignIn = (e) => {
     this.props.dispatch(logIn(this.state.userId));
+    this.props.history.push('/home');
   }
 
   render() {
     const { users } = this.props;
+
     const { userId } = this.state;
     let avatar = <div className="avatar"></div>
     if (userId !== '') {
@@ -57,4 +60,4 @@ function mapStateToProps({ users }) {
   return { users };
 }
 
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));
