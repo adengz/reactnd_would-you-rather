@@ -5,29 +5,29 @@ import QuestionCard from './QuestionCard';
 class QuestionList extends React.Component {
   state = { activeTab: 'unanswered' };
 
-  toggleTab = (e) => {
-    this.setState({ activeTab: e.target.value });
+  toggleTab = (tab) => {
+    this.setState({ activeTab: tab });
   }
 
   render() {
     const { activeTab } = this.state;
     const questionIds = this.props[activeTab + 'Ids'];
 
-    const tabs = {
-      unanswered: 'tab',
-      answered: 'tab'
-    };
-    tabs[activeTab] += '-active';
+    const lists = ['unanswered', 'answered']
 
     return (
       <div>
-        <div className="tabs">
-          {Object.entries(tabs).map(([k, v]) => (
-            <button key={k} className={v} value={k} onClick={this.toggleTab}>
-              {`${k} questions`}
-            </button>
+        <ul className="tabs">
+          {lists.map((tab) => (
+            <li
+              key={tab}
+              className={(tab === activeTab) ? 'active' : null}
+              onClick={() => this.toggleTab(tab)}
+            >
+              {`${tab} questions`}
+            </li>
           ))}
-        </div>
+        </ul>
         <ul className="question-list">
           {questionIds.map((id) => (
             <li key={id}>
