@@ -31,16 +31,13 @@ class App extends React.Component {
         <LoadingBar />
         {authedUser !== null && <Nav />}
         <div className="container">
-          {authedUser === null ? (
+          <Switch>
             <Route path="/login" component={Login} />
-          ) : (
-            <Switch>
-              <Route path="/home" component={QuestionList} />
-              <Route path="/questions/:id" component={Question} />
-              <Route path="/add" component={NewQuestion} />
-              <Route path="/leaderboard" component={Leaderboard} />
-            </Switch>
-          )}
+            <Route path="/home" component={QuestionList} />
+            <Route path="/questions/:id" component={Question} />
+            <Route path="/add" component={NewQuestion} />
+            <Route path="/leaderboard" component={Leaderboard} />
+          </Switch>
         </div>
       </Fragment>
     );
