@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import Login from './Login';
@@ -16,14 +17,20 @@ class App extends React.Component {
     const { authedUser } = this.props;
 
     return (
-      <div className="container">
-        {
-          authedUser === null
-            ? <Login />
-            : <QuestionList />
-            // : <Question match={{params:{id:'vthrdm985a262al8qx3do'}}} />
-        }
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          {
+            authedUser === null
+              ? <Route path="/login" component={Login} />
+              : <div>
+                  <Route path="/home" component={QuestionList} />
+                  <Route path="/questions/:id" component={Question} />
+                  <Route path="/add" component={NewQuestion} />
+                  <Route path="/leaderboard" component={Leaderboard} />
+                </div>
+          }
+        </div>
+      </BrowserRouter>
     );
   };
 }
