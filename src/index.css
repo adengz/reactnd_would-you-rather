@@ -71,8 +71,7 @@ li {
 }
 
 .btn:hover:enabled {
-  border-color: #3cb371;
-  background-color: #3cb371;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -81,10 +80,42 @@ li {
   display: block;
 }
 
+.tabs {
+  height: 30px;
+}
+
+.tab, .tab-active {
+  width: 50%;
+  height: 100%;
+  border: 2px solid #d3d3d3;
+  font-size: large;
+  text-transform: capitalize;
+}
+
+.tab:focus, .tab-active:focus {
+  outline: none;
+}
+
+.tab {
+  background-color: #20b2aa;
+  color: #ffffff;
+}
+
+.tab-active {
+  border-bottom: none;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+.question-list {
+  border: 2px solid #d3d3d3;
+  border-top: none;
+  margin-top: 0;
+}
+
 p.option, p.option-mine {
   margin: 15px 10px;
   padding: 5px 5px;
-  border: 3px solid #d3d3d3;
   border-radius: 3px;
 }
 
@@ -92,12 +123,6 @@ p.option-mine {
   border: 3px solid #20b2aa;
   background-color: #a8f0ed;
   font-weight: bold;
-}
-
-.text-input {
-  width: 80%;
-  margin: auto;
-  display: block;
 }
 
 .vote-bar {
@@ -118,4 +143,10 @@ p.option-mine {
   background-color: #20b2aa;
   color: #ffffff;
   font-weight: bold;
+}
+
+.text-input {
+  width: 80%;
+  margin: auto;
+  display: block;
 }

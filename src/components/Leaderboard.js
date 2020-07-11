@@ -5,7 +5,7 @@ import UserCard from './UserCard';
 function Leaderboard(props) {
   return (
     <div>
-      <ul className="card-list">
+      <ul>
         {props.userIds.map((id) => (
           <li key={id}>
             <UserCard id={id} />

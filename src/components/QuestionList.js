@@ -14,23 +14,21 @@ class QuestionList extends React.Component {
     const questionIds = this.props[activeTab + 'Ids'];
 
     const tabs = {
-      unanswered: 'question-list-tab',
-      answered: 'question-list-tab'
+      unanswered: 'tab',
+      answered: 'tab'
     };
     tabs[activeTab] += '-active';
 
     return (
       <div>
-        <ul className="question-list-tabs">
+        <div className="tabs">
           {Object.entries(tabs).map(([k, v]) => (
-            <li key={k}>
-              <button className={v} value={k} onClick={this.toggleTab}>
-                {`${k} questions`}
-              </button>
-            </li>
+            <button key={k} className={v} value={k} onClick={this.toggleTab}>
+              {`${k} questions`}
+            </button>
           ))}
-        </ul>
-        <ul className="card-list">
+        </div>
+        <ul className="question-list">
           {questionIds.map((id) => (
             <li key={id}>
               <QuestionCard id={id}/>
