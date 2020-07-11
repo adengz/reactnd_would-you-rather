@@ -27,10 +27,34 @@ function NavBar(props) {
 
 const NavBarWithRouter = withRouter(NavBar);
 
+class AuthedUserInfo extends React.Component {
+  render() {
+    const { avatarURL, name } = this.props;
+    
+    return (
+      <div className="auth-user">
+        <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
+        <p className="name">
+          {name}
+          <button className="logout">Logout</button>
+        </p>
+      </div>
+    );
+  }
+}
+
+function mapStateToProps({ authedUser, users }) {
+  const { avatarURL, name } = users[authedUser];
+  return { avatarURL, name };
+}
+
+const ConnectedAuthedUserInfo = connect(mapStateToProps)(AuthedUserInfo);
+
 function Nav() {
   return (
     <nav>
       <NavBarWithRouter />
+      <ConnectedAuthedUserInfo />
     </nav>
   );
 }

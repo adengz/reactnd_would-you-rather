@@ -158,7 +158,7 @@ p.option-mine {
 }
 
 nav {
-  height: 40px;
+  height: 50px;
   margin: 20px auto;
   display: block;
   border-bottom: 5px solid #20b2aa;
@@ -166,7 +166,6 @@ nav {
 }
 
 ul.nav-bar {
-  width: 80%;
   margin-bottom: 0;
   position: absolute;
   bottom: 0;
@@ -199,4 +198,29 @@ ul.nav-bar > li.active {
   background-color: #20b2aa;
   color: #ffffff;
   font-weight: bold;
+}
+
+.auth-user {
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+}
+
+.auth-user > img.avatar {
+  height: 100%;
+  margin: 0;
+}
+
+.auth-user > p.name {
+  margin: 8px;
+}
+
+.logout {
+  margin: 0;
+  border: 3px solid #20b2aa;
+  border-radius: 3px;
+  background-color: #20b2aa;
+  color: #ffffff;
+  display: block;
 }
