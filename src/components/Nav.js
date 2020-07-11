@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logOut } from '../actions/authedUser';
 
 function NavBar(props) {
   const routes = {
@@ -28,6 +29,11 @@ function NavBar(props) {
 const NavBarWithRouter = withRouter(NavBar);
 
 class AuthedUserInfo extends React.Component {
+  handleSignOut = (e) => {
+    this.props.dispatch(logOut());
+    this.props.history.push('/login');
+  }
+
   render() {
     const { avatarURL, name } = this.props;
     
@@ -36,7 +42,7 @@ class AuthedUserInfo extends React.Component {
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <p className="name">
           {name}
-          <button className="logout">Logout</button>
+          <button className="signout" onClick={this.handleSignOut}>Sign Out</button>
         </p>
       </div>
     );
@@ -48,7 +54,7 @@ function mapStateToProps({ authedUser, users }) {
   return { avatarURL, name };
 }
 
-const ConnectedAuthedUserInfo = connect(mapStateToProps)(AuthedUserInfo);
+const ConnectedAuthedUserInfo = withRouter(connect(mapStateToProps)(AuthedUserInfo));
 
 function Nav() {
   return (
