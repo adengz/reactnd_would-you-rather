@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { handleVote } from '../actions/shared';
+import VoteBar from './VoteBar';
 
 class Vote extends React.Component {
   state = { selectedOption: null };
@@ -61,8 +62,9 @@ function Result(props) {
     options[o].className = 'option';
     (o === answer) && (options[o].className += '-mine');
   }
-  const ratio = options[answer].votes.length / totalVotes * 100;
-  // TODO: build a nicer bar
+  for (let o in options) {
+    options[o].ratio = Math.round(options[o].votes.length / totalVotes * 100);
+  }
 
   return (
     <div className="card">
@@ -70,12 +72,16 @@ function Result(props) {
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
       <div className="card-detail">
         <h3>Results:</h3>
-        {/* <progress max={100} value={ratio}>{ratio}%</progress> */}
+        <VoteBar options={options} totalVotes={totalVotes} />
         {Object.entries(options).map(([k, v]) => (
           <p key={k} className={v.className}>
-            {v.votes.length} of {totalVotes}
-             ({v.votes.length / totalVotes * 100}%)
-             would rather<br/>{v.text}
+            {(v.className.endsWith('mine')) && (
+              <span style={{ textDecoration: 'underline' }}>
+                Your choice<br/>
+              </span>
+            )}
+            {v.votes.length} of {totalVotes} ({v.ratio}%) would rather
+            <br/>{v.text}
           </p>
         ))}
       </div>

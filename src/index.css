@@ -84,15 +84,38 @@ li {
 p.option, p.option-mine {
   margin: 15px 10px;
   padding: 5px 5px;
+  border: 3px solid #d3d3d3;
+  border-radius: 3px;
 }
 
 p.option-mine {
   border: 3px solid #20b2aa;
   background-color: #a8f0ed;
+  font-weight: bold;
 }
 
 .text-input {
   width: 80%;
   margin: auto;
   display: block;
+}
+
+.vote-bar {
+  background-color: #d3d3d3;
+  height: 30px;
+  width: 80%;
+  margin: 20px auto;
+  display: block;
+  border-radius: 3px;
+  font-size: larger;
+}
+
+.bar {
+  background-color: 'inherit';
+}
+
+.bar-mine {
+  background-color: #20b2aa;
+  color: #ffffff;
+  font-weight: bold;
 }
