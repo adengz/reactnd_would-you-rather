@@ -51,6 +51,16 @@ img.avatar {
   float: left;
 }
 
+p.option {
+  margin: 15px 10px;
+  padding: 5px 5px;
+  border-radius: 3px;
+}
+
+.center {
+  text-align: center;
+}
+
 /* card */
 
 div.card {
@@ -78,6 +88,14 @@ div.card > div.detail {
 div.card button {
   width: 80%;
   margin: 10px auto;
+}
+
+/* login */
+
+select.dropdown {
+  width: 80%;
+  margin: 25px auto;
+  display: block;
 }
 
 /* header */
@@ -185,31 +203,15 @@ ul.question-list {
   margin-top: 0;
 }
 
+/* result */
 
-
-.center {
-  text-align: center;
-}
-
-.dropdown {
-  width: 80%;
-  margin: 25px auto;
-  display: block;
-}
-
-p.option, p.option-mine {
-  margin: 15px 10px;
-  padding: 5px 5px;
-  border-radius: 3px;
-}
-
-p.option-mine {
+p.option.mine {
   border: 3px solid #20b2aa;
   background-color: #a8f0ed;
   font-weight: bold;
 }
 
-.vote-bar {
+div.vote-bar {
   background-color: #d3d3d3;
   height: 30px;
   width: 80%;
@@ -219,17 +221,19 @@ p.option-mine {
   font-size: larger;
 }
 
-.bar {
+div.vote-bar > div.bar {
   background-color: 'inherit';
 }
 
-.bar-mine {
+div.vote-bar > div.bar.mine {
   background-color: #20b2aa;
   color: #ffffff;
   font-weight: bold;
 }
 
-.text-input {
+/* new question */
+
+div.card > input[type=text] {
   width: 80%;
   margin: auto;
   display: block;

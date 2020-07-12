@@ -59,7 +59,7 @@ function Result(props) {
   for (let o in options) {
     totalVotes += options[o].votes.length;
     options[o].className = 'option';
-    (o === answer) && (options[o].className += '-mine');
+    (o === answer) && (options[o].className += ' mine');
   }
   for (let o in options) {
     options[o].ratio = Math.round(options[o].votes.length / totalVotes * 100);

@@ -22,7 +22,6 @@ class NewQuestion extends React.Component {
         <h2 className="title center">Create New Question</h2>
         <h3 className="center">Would you rather</h3>
         <input
-          className="text-input"
           type="text"
           name="optionOneText"
           value={this.state.optionOneText}
@@ -30,7 +29,6 @@ class NewQuestion extends React.Component {
         />
         <p className="center">or</p>
         <input
-          className="text-input"
           type="text"
           name="optionTwoText"
           value={this.state.optionTwoText}

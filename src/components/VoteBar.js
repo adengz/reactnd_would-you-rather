@@ -10,7 +10,7 @@ function VoteBar(props) {
     alignItems: 'center'
   };
 
-  const position = { optionOne: 'left', optionTwo: 'right'};
+  const position = { optionOne: 'left', optionTwo: 'right' };
 
   const { options } = props;
   for (let o in options) {
