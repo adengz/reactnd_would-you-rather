@@ -43,7 +43,7 @@ class QuestionList extends React.Component {
 function mapStateToProps({ authedUser, questions, users }) {
   const questionIds = Object.keys(questions);
   const { answers } = users[authedUser];
-  questionIds.sort((a, b) => questions[b].timestamp - questions[a].timesstamp);
+  questionIds.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
 
   return {
     answeredIds: questionIds.filter((id) => answers.hasOwnProperty(id)),
