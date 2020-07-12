@@ -27,9 +27,9 @@ class Login extends React.Component {
 
     return (
       <div className="card">
-        <h1 className="card-title">Would you rather...</h1>
+        <h1 className="title">Would you rather...</h1>
         {avatar}
-        <div className="card-detail">
+        <div className="detail">
           <p className="center">Choose your profile to sign in</p>
           <select
             className="dropdown"

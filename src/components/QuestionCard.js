@@ -6,9 +6,9 @@ function QuestionCard(props) {
 
   return (
     <div className="card">
-      <h3 className="card-title">{`${name} asks`}</h3>
+      <h3 className="title">{`${name} asks`}</h3>
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-      <div className="card-detail">
+      <div className="detail">
         <h4>Would you rather</h4>
         <p className="option">{option}</p>
         <p className="option">or ...</p>

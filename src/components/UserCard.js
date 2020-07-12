@@ -6,9 +6,9 @@ function UserCard(props) {
 
   return (
     <div className="card">
-      <h3 className="card-title">{name}</h3>
+      <h3 className="title">{name}</h3>
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-      <div className="card-detail">
+      <div className="detail">
         <h4>Total score: {questionsCreated + questionsAnswered}</h4>
         <p className="option">Questions created: {questionsCreated}</p>
         <p className="option">Questions answered: {questionsAnswered}</p>

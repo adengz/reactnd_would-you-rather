@@ -22,9 +22,9 @@ class Vote extends React.Component {
 
     return (
       <div className="card">
-        <h2 className="card-title">{`${name} asks`}</h2>
+        <h2 className="title">{`${name} asks`}</h2>
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-        <div className="card-detail">
+        <div className="detail">
           <h3>Would you rather</h3>
           {Object.entries(options).map(([k, v]) => (
             <p key={k} className="option">
@@ -67,9 +67,9 @@ function Result(props) {
 
   return (
     <div className="card">
-      <h2 className="card-title">{`Asked by ${name}`}</h2>
+      <h2 className="title">{`Asked by ${name}`}</h2>
       <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
-      <div className="card-detail">
+      <div className="detail">
         <h3>Results:</h3>
         <VoteBar options={options} totalVotes={totalVotes} />
         {Object.entries(options).map(([k, v]) => (

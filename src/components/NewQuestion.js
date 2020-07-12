@@ -17,7 +17,7 @@ class NewQuestion extends React.Component {
   render() {
     return (
       <div className="card">
-        <h2 className="card-title">Create New Question</h2>
+        <h2 className="title center">Create New Question</h2>
         <h3 className="center">Would you rather</h3>
         <input
           className="text-input"
