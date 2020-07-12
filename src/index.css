@@ -147,7 +147,7 @@ div.auth-user {
   height: 100%;
   position: absolute;
   bottom: 0;
-  right: -10%;
+  right: 0;
 }
 
 div.auth-user > img.avatar {
