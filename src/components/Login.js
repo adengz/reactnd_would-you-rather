@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logIn } from '../actions/authedUser';
+import { setAuthedUser } from '../actions/authedUser';
 
 class Login extends React.Component {
   state = { userId: '' };
@@ -11,7 +11,7 @@ class Login extends React.Component {
   }
 
   handleSignIn = (e) => {
-    this.props.dispatch(logIn(this.state.userId));
+    this.props.dispatch(setAuthedUser(this.state.userId));
     this.props.history.push('/');
   }
 
@@ -19,7 +19,7 @@ class Login extends React.Component {
     const { users } = this.props;
 
     const { userId } = this.state;
-    let avatar = <div className="avatar"></div>
+    let avatar = <div className="avatar"></div>;
     if (userId !== '') {
       const { avatarURL, name } = users[userId];
       avatar = <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />;

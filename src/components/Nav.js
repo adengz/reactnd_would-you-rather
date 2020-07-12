@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logOut } from '../actions/authedUser';
+import { setAuthedUser } from '../actions/authedUser';
 
 function NavBar(props) {
   const routes = {
@@ -30,7 +30,7 @@ const NavBarWithRouter = withRouter(NavBar);
 
 class AuthedUserInfo extends React.Component {
   handleSignOut = (e) => {
-    this.props.dispatch(logOut());
+    this.props.dispatch(setAuthedUser(null));
     this.props.history.push('/login');
   }
 
@@ -42,7 +42,12 @@ class AuthedUserInfo extends React.Component {
         <img className="avatar" src={avatarURL} alt={`${name}'s avatar`} />
         <p className="name">
           {name}
-          <button className="signout" onClick={this.handleSignOut}>Sign Out</button>
+          <button
+            className="signout"
+            onClick={this.handleSignOut}
+          >
+            Sign Out
+          </button>
         </p>
       </div>
     );
