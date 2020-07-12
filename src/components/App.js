@@ -1,5 +1,5 @@
 import React, { Fragment }  from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
@@ -14,9 +14,10 @@ class App extends React.Component {
   state = { loading: true };
 
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
-    this.setState({ loading: false });
-    this.props.history.push('/login');
+    this.props.dispatch(handleInitialData()).then(() => {
+      this.setState({ loading: false });
+      this.props.history.push('/login');
+    });
   }
 
   render() {
@@ -31,13 +32,18 @@ class App extends React.Component {
         <LoadingBar />
         {authedUser !== null && <Nav />}
         <div className="container">
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/home" component={QuestionList} />
-            <Route path="/questions/:id" component={Question} />
-            <Route path="/add" component={NewQuestion} />
-            <Route path="/leaderboard" component={Leaderboard} />
-          </Switch>
+          {
+            authedUser === null 
+              ? <Route path="/login" component={Login} /> 
+              : (
+                <Fragment>
+                  <Route path="/" exact component={QuestionList} />
+                  <Route path="/questions/:id" component={Question} />
+                  <Route path="/add" component={NewQuestion} />
+                  <Route path="/leaderboard" component={Leaderboard} />
+                </Fragment>
+              )
+          }
         </div>
       </Fragment>
     );

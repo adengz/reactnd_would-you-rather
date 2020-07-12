@@ -12,7 +12,7 @@ class NewQuestion extends React.Component {
 
   handleSubmit = (e) => {
     this.props.dispatch(handleNewQuestion(this.state)).then(() => {
-      this.props.history.push('/home');
+      this.props.history.push('/');
     });
   }
 

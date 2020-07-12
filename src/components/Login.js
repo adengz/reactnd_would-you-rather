@@ -12,7 +12,7 @@ class Login extends React.Component {
 
   handleSignIn = (e) => {
     this.props.dispatch(logIn(this.state.userId));
-    this.props.history.push('/home');
+    this.props.history.push('/');
   }
 
   render() {

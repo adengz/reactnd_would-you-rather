@@ -5,7 +5,7 @@ import { logOut } from '../actions/authedUser';
 
 function NavBar(props) {
   const routes = {
-    '/home': 'Home',
+    '/': 'Home',
     '/add': 'New Question',
     '/leaderboard': 'Leaderboard'
   };
