@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleNewQuestion } from '../actions/shared';
 
@@ -10,8 +11,9 @@ class NewQuestion extends React.Component {
   }
 
   handleSubmit = (e) => {
-    this.props.dispatch(handleNewQuestion(this.state));
-    // TODO: redirect to home
+    this.props.dispatch(handleNewQuestion(this.state)).then(() => {
+      this.props.history.push('/home');
+    });
   }
 
   render() {
@@ -45,4 +47,4 @@ class NewQuestion extends React.Component {
   }
 }
 
-export default connect()(NewQuestion);
+export default withRouter(connect()(NewQuestion));
