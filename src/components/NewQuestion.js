@@ -35,7 +35,6 @@ class NewQuestion extends React.Component {
           onChange={this.handleInput}
         />
         <button
-          className="btn"
           onClick={this.handleSubmit}
           disabled={Object.values(this.state).includes('')}
         >

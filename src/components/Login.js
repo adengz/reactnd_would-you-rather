@@ -44,7 +44,6 @@ class Login extends React.Component {
             ))}
           </select>
           <button
-            className="btn"
             onClick={this.handleSignIn}
             disabled={this.state.userId === ''}
           >

@@ -58,7 +58,7 @@ const ConnectedAuthedUserInfo = withRouter(connect(mapStateToProps)(AuthedUserIn
 
 function Nav() {
   return (
-    <nav>
+    <nav className="header">
       <NavBarWithRouter />
       <ConnectedAuthedUserInfo />
     </nav>

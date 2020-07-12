@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import QuestionCard from './QuestionCard';
 
@@ -16,7 +16,7 @@ class QuestionList extends React.Component {
     const lists = ['unanswered', 'answered']
 
     return (
-      <div>
+      <Fragment>
         <ul className="tabs">
           {lists.map((tab) => (
             <li
@@ -35,7 +35,7 @@ class QuestionList extends React.Component {
             </li>
           ))}
         </ul>
-      </div>
+      </Fragment>
     );
   }
 }

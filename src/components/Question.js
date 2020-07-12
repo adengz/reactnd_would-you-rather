@@ -41,7 +41,6 @@ class Vote extends React.Component {
             </p>
           ))}
           <button
-            className="btn"
             onClick={this.handleSubmit}
             disabled={this.state.selectedOption === null}
           >

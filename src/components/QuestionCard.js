@@ -12,7 +12,7 @@ function QuestionCard(props) {
         <h4>Would you rather</h4>
         <p className="option">{option}</p>
         <p className="option">or ...</p>
-        <button className="btn">View Question</button>
+        <button>View Question</button>
       </div>      
     </div>
   );

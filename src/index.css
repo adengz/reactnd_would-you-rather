@@ -23,141 +23,37 @@ a {
   text-decoration: inherit;
 }
 
-.container {
+button {
+  border: 3px solid #20b2aa;
+  border-radius: 3px;
+  background-color: #20b2aa;
+  color: #ffffff;
+  display: block;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+button:hover:enabled {
+  cursor: pointer;
+}
+
+div.container {
   max-width: 500px;
   margin: 0 auto;
   padding: 10px;
 }
 
-.center {
-  text-align: center;
-}
-
-.card {
-  width: 100%;
-  min-height: 200px;
-  border: 2px solid #d3d3d3;
-  border-radius: 5px;
-  margin: 0;
-  display: table;
-}
-
-.card-title {
-  margin: 0;
-  padding: 5px;
-  background-color: #20b2aa;
-  color: #ffffff;
-}
-
-.card-detail {
-  width: 70%;
-  margin: 0;
-  float: right;
-}
-
-.avatar {
+img.avatar {
   width: 25%;
   margin: 10px;
   float: left;
 }
 
-.btn {
-  width: 80%;
-  margin: 10px auto;
-  border: 3px solid #20b2aa;
-  border-radius: 3px;
-  background-color: #20b2aa;
-  color: #ffffff;
-  display: block;
-}
+/* header */
 
-.btn:disabled {
-  opacity: 0.6;
-}
-
-.btn:hover:enabled {
-  cursor: pointer;
-}
-
-.dropdown {
-  width: 80%;
-  margin: 25px auto;
-  display: block;
-}
-
-.tabs {
-  height: 30px;
-}
-
-.tab, .tab-active {
-  width: 50%;
-  height: 100%;
-  border: 2px solid #d3d3d3;
-  font-size: large;
-  text-transform: capitalize;
-}
-
-.tab:focus, .tab-active:focus {
-  outline: none;
-}
-
-.tab {
-  background-color: #20b2aa;
-  color: #ffffff;
-  opacity: 0.6;
-}
-
-.tab-active {
-  border-bottom: none;
-  background-color: #ffffff;
-  font-weight: bold;
-}
-
-.question-list {
-  border: 2px solid #d3d3d3;
-  border-top: none;
-  margin-top: 0;
-}
-
-p.option, p.option-mine {
-  margin: 15px 10px;
-  padding: 5px 5px;
-  border-radius: 3px;
-}
-
-p.option-mine {
-  border: 3px solid #20b2aa;
-  background-color: #a8f0ed;
-  font-weight: bold;
-}
-
-.vote-bar {
-  background-color: #d3d3d3;
-  height: 30px;
-  width: 80%;
-  margin: 20px auto;
-  display: block;
-  border-radius: 3px;
-  font-size: larger;
-}
-
-.bar {
-  background-color: 'inherit';
-}
-
-.bar-mine {
-  background-color: #20b2aa;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-.text-input {
-  width: 80%;
-  margin: auto;
-  display: block;
-}
-
-nav {
+nav.header {
   height: 50px;
   margin: 20px auto;
   display: block;
@@ -200,27 +96,139 @@ ul.nav-bar > li.active {
   font-weight: bold;
 }
 
-.auth-user {
+div.auth-user {
   height: 100%;
   position: absolute;
   bottom: 0;
   right: -10%;
 }
 
-.auth-user > img.avatar {
+div.auth-user > img.avatar {
   height: 100%;
   margin: 0;
 }
 
-.auth-user > p.name {
+div.auth-user > p.name {
   margin: 8px;
 }
 
-.signout {
+button.signout {
   margin: 0;
-  border: 3px solid #20b2aa;
-  border-radius: 3px;
+  display: block;
+}
+
+/* question list */
+
+ul.tabs {
+  height: 30px;
+  border: 2px solid #d3d3d3;
+  border-bottom: none;
+  margin: 0;
+}
+
+ul.tabs > li {
+  width: 50%;
+  height: 100;
+  border-bottom: 2px solid #d3d3d3;;
+  padding: 5px 0;
   background-color: #20b2aa;
   color: #ffffff;
+  opacity: 0.6;
+  font-size: large;
+  text-transform: capitalize;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.tabs > li.active {
+  border-bottom: none;
+  background-color: #ffffff;
+  color: #252525;
+  opacity: 1;
+  font-weight: bold;
+}
+
+ul.question-list {
+  border: 2px solid #d3d3d3;
+  border-top: none;
+  margin-top: 0;
+}
+
+
+
+.center {
+  text-align: center;
+}
+
+.card {
+  width: 100%;
+  min-height: 200px;
+  border: 2px solid #d3d3d3;
+  border-radius: 5px;
+  margin: 0;
+  display: table;
+}
+
+.card-title {
+  margin: 0;
+  padding: 5px;
+  background-color: #20b2aa;
+  color: #ffffff;
+}
+
+.card-detail {
+  width: 70%;
+  margin: 0;
+  float: right;
+}
+
+.card button {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.dropdown {
+  width: 80%;
+  margin: 25px auto;
+  display: block;
+}
+
+p.option, p.option-mine {
+  margin: 15px 10px;
+  padding: 5px 5px;
+  border-radius: 3px;
+}
+
+p.option-mine {
+  border: 3px solid #20b2aa;
+  background-color: #a8f0ed;
+  font-weight: bold;
+}
+
+.vote-bar {
+  background-color: #d3d3d3;
+  height: 30px;
+  width: 80%;
+  margin: 20px auto;
+  display: block;
+  border-radius: 3px;
+  font-size: larger;
+}
+
+.bar {
+  background-color: 'inherit';
+}
+
+.bar-mine {
+  background-color: #20b2aa;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.text-input {
+  width: 80%;
+  margin: auto;
   display: block;
 }
