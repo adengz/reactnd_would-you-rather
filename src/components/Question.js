@@ -53,7 +53,9 @@ class Vote extends React.Component {
 }
 
 function Result(props) {
-  const { name, avatarURL, options, answer } = props;
+  const { name, avatarURL, answer } = props;
+  // create a deep copy of options
+  const options = JSON.parse(JSON.stringify(props.options));
 
   let totalVotes = 0;
   for (let o in options) {
@@ -90,7 +92,7 @@ function Result(props) {
 
 function Question(props) {
   const { answer } = props;
-  return answer === undefined? <Vote {...props} />:<Result {...props} />;;
+  return answer === undefined ? <Vote {...props} /> : <Result {...props} />;
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {
