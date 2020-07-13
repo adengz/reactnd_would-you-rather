@@ -21,7 +21,7 @@ class Login extends React.Component {
     const { authedUser, users } = this.props;
 
     if (authedUser !== null) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     const { userId } = this.state;

@@ -13,7 +13,7 @@ class QuestionList extends React.Component {
     const { activeTab } = this.state;
     const questionIds = this.props[activeTab + 'Ids'];
 
-    const lists = ['unanswered', 'answered']
+    const lists = ['unanswered', 'answered'];
 
     return (
       <Fragment>
