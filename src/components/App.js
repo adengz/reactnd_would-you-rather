@@ -1,5 +1,5 @@
 import React, { Fragment }  from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
@@ -9,6 +9,7 @@ import Question from './Question';
 import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
+import NotFound from './NotFound';
 
 function PrivateRoute({ component: Component, authed, ...rest}) {
   return (
@@ -49,11 +50,14 @@ class App extends React.Component {
         <LoadingBar />
         {authed && <Nav />}
         <div className="container">
-          <Route path="/login" component={Login} />
-          <PrivateRoute path="/" exact component={QuestionList} authed={authed} />
-          <PrivateRoute path="/questions/:id" component={Question} authed={authed} />
-          <PrivateRoute path="/add" component={NewQuestion} authed={authed} />
-          <PrivateRoute path="/leaderboard" component={Leaderboard} authed={authed} />
+          <Switch>
+            <Route path="/login" component={Login} />
+            <PrivateRoute path="/" exact component={QuestionList} authed={authed} />
+            <PrivateRoute path="/questions/:id" component={Question} authed={authed} />
+            <PrivateRoute path="/add" component={NewQuestion} authed={authed} />
+            <PrivateRoute path="/leaderboard" component={Leaderboard} authed={authed} />
+            <PrivateRoute path="*" component={NotFound} authed={authed} />
+          </Switch>
         </div>
       </Fragment>
     );
