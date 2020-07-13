@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { handleVote } from '../actions/shared';
 import VoteBar from './VoteBar';
+import NotFound from './NotFound';
 
 class Vote extends React.Component {
   state = { selectedOption: null };
@@ -91,13 +92,19 @@ function Result(props) {
 }
 
 function Question(props) {
-  const { answer } = props;
+  const { notFound, answer } = props;
+  if (notFound) return <NotFound />;
   return answer === undefined ? <Vote {...props} /> : <Result {...props} />;
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
   const question = questions[id];
+
+  if (question === undefined) {
+    return { notFound: true };
+  }
+
   const { avatarURL, name } = users[question.author];
   const { optionOne, optionTwo } = question;
   const answer = users[authedUser].answers[id];
