@@ -1,5 +1,5 @@
 import React, { Fragment }  from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LoadingBar from 'react-redux-loading';
 import { handleInitialData } from '../actions/shared';
@@ -10,13 +10,30 @@ import NewQuestion from './NewQuestion';
 import Leaderboard from './Leaderboard';
 import Nav from './Nav';
 
+function PrivateRoute({ component: Component, authed, ...rest}) {
+  return (
+    <Route
+      {...rest}
+      render={(props) => (
+        authed
+          ? <Component {...props} />
+          : <Redirect
+              to={{
+                pathname: 'login',
+                state: { from: props.location }
+              }}
+            />
+      )}
+    />
+  );
+}
+
 class App extends React.Component {
   state = { loading: true };
 
   componentDidMount() {
     this.props.dispatch(handleInitialData()).then(() => {
       this.setState({ loading: false });
-      this.props.history.push('/login');
     });
   }
 
@@ -25,25 +42,18 @@ class App extends React.Component {
       return null;
     }
 
-    const { authedUser } = this.props;
+    const { authed } = this.props;
 
     return (
       <Fragment>
         <LoadingBar />
-        {authedUser !== null && <Nav />}
+        {authed && <Nav />}
         <div className="container">
-          {
-            authedUser === null 
-              ? <Route path="/login" component={Login} /> 
-              : (
-                <Fragment>
-                  <Route path="/" exact component={QuestionList} />
-                  <Route path="/questions/:id" component={Question} />
-                  <Route path="/add" component={NewQuestion} />
-                  <Route path="/leaderboard" component={Leaderboard} />
-                </Fragment>
-              )
-          }
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/" exact component={QuestionList} authed={authed} />
+          <PrivateRoute path="/questions/:id" component={Question} authed={authed} />
+          <PrivateRoute path="/add" component={NewQuestion} authed={authed} />
+          <PrivateRoute path="/leaderboard" component={Leaderboard} authed={authed} />
         </div>
       </Fragment>
     );
@@ -51,7 +61,7 @@ class App extends React.Component {
 }
 
 function mapStateToProps({ authedUser }) {
-  return { authedUser };
+  return { authed: authedUser !== null };
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App);

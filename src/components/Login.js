@@ -11,8 +11,10 @@ class Login extends React.Component {
   }
 
   handleSignIn = (e) => {
-    this.props.dispatch(setAuthedUser(this.state.userId));
-    this.props.history.push('/');
+    const { dispatch, location, history } = this.props;
+    dispatch(setAuthedUser(this.state.userId));
+    const { from } = location.state || { from: { pathname: '/' } };
+    history.replace(from);
   }
 
   render() {
