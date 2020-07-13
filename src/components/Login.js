@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
 
@@ -18,7 +18,11 @@ class Login extends React.Component {
   }
 
   render() {
-    const { users } = this.props;
+    const { authedUser, users } = this.props;
+
+    if (authedUser !== null) {
+      return <Redirect to="/" />
+    }
 
     const { userId } = this.state;
     let avatar = <div className="avatar"></div>;
@@ -57,8 +61,8 @@ class Login extends React.Component {
   }
 }
 
-function mapStateToProps({ users }) {
-  return { users };
+function mapStateToProps({ authedUser, users }) {
+  return { authedUser, users };
 }
 
 export default withRouter(connect(mapStateToProps)(Login));
