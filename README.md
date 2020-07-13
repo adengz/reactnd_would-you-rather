@@ -1,6 +1,20 @@
 # Would You Rather?
 
-## Project Layout
+To get started, all you need to do:
+
+* First, install dependencies
+
+```
+yarn install
+```
+
+* Then, start the server at `localhost:3000`
+
+```
+yarn start
+```
+
+<!--## Project Layout
 
 ### Views and Components
 
@@ -115,4 +129,4 @@ located at route `/leaderboard`
     }
   }
 }
-```
+```-->
