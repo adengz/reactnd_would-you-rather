@@ -31,7 +31,7 @@ const NavBarWithRouter = withRouter(NavBar);
 class AuthedUserInfo extends React.Component {
   handleSignOut = (e) => {
     this.props.dispatch(setAuthedUser(null));
-    this.props.history.push('/login');
+    this.props.history.push('/');
   }
 
   render() {
