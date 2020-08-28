@@ -11,11 +11,12 @@ body {
 
 ul {
   padding-left: 0;
+  margin: 0;
 }
 
 li {
   list-style-type: none;
-  padding: 10px;
+  padding: 5px;
 }
 
 a { 
@@ -102,7 +103,7 @@ select.dropdown {
 
 nav.header {
   height: 50px;
-  margin: 20px auto;
+  margin: 10px auto 0;
   display: block;
   border-bottom: 5px solid #20b2aa;
   position: relative;
